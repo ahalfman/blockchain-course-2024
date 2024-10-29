@@ -1,11 +1,13 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const BuyMyRoom = await ethers.getContractFactory("BuyMyRoom.sol");
+  const BuyMyRoom = await ethers.getContractFactory("BuyMyRoom");
   const buyMyRoom = await BuyMyRoom.deploy();
   await buyMyRoom.deployed();
-
   console.log(`BuyMyRoom deployed to ${buyMyRoom.address}`);
+
+  const ercPoint = await buyMyRoom.ercPoint();
+  console.log(`ERCPoint  deployed to ${ercPoint}`)
 }
 
 // We recommend this pattern to be able to use async/await everywhere
